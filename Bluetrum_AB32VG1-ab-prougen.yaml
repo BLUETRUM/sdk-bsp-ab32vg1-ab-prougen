@@ -1,0 +1,96 @@
+board:
+  buy_url_cn: https://detail.tmall.com/item.htm?id=609759187128
+  buy_url_global: https://detail.tmall.com/item.htm?id=609759187128
+  debug_interface: SWD
+  debugger: ST-LINK
+  description_en: The PROUGEN G1 is a board made by BLUETRUM. The onboard resources are very rich and the integration is very high.
+  description_zh: 骄龙 G1 是 中科蓝讯 出品的板子。板载资源非常丰富，集成度非常高。
+  emulator_machine: ''
+  large_image: documents/images/board_large.png
+  name: AB32VG1-AB-PROUGEN
+  price_cn: 238.00 CNY
+  price_global: 35.00 USD
+  sale_contact_cn: 
+  sale_contact_global: 
+  small_image: documents/images/board_small.png
+  vendor: Bluetrum
+  version: Rev.A
+chip:
+  chip_name: AB32VG1
+  clock_source: HSE
+  device_vendor: Bluetrum
+  family_name: RISCV
+  rx_name: PA10
+  series_name: STM32L4
+  source_freq: '8000000'
+  sub_series_name: STM32L475
+  target_freq: '240000000'
+  tx_name: PA9
+  uart_name: UART0
+docs:
+- category: manual
+  file: documents/manuals/UM3004-RT-Thread-IoT Board.pdf
+  title: Rt-Thread IoT Board
+- category: sheet
+  file: documents/sheet/STM32L475xx Datasheet.pdf
+  title: STM32L475xx Datasheet
+example_projects: []
+features:
+- On-board XLink
+- SRAM:192K
+- Audio:on chip
+- Examples:36 bare-metal demos and 30 RT-Thread demos
+features_zh:
+- On-board XLink
+- SRAM:192K
+- Audio:on chip
+- Examples:36 bare-metal demos and 30 RT-Thread demos
+pkg_type: Board_Support_Packages
+pkg_vendor: Bluetrum
+pkg_version: 1.0.0
+template_projects:
+- builtin_files:
+  - files_and_folders:
+    - .config
+    - .cproject
+    - .gitignore
+    - .project
+    - .settings
+    - applications
+    - board
+    - cconfig.h
+    - header.bin
+    - Kconfig
+    - libcpu
+    - libraries
+    - link.lds
+    - README.md
+    - riscv32-elf-xmaker.exe
+    - rtconfig.h
+    - rtconfig.py
+    - rtthread.xm
+    - SConscript
+    - SConstruct
+    source_path_offset: rtt_default_project_0
+    target_path_offset: ''
+  external_files:
+  - files_and_folders:
+    - components
+    - include
+    - libcpu/arm
+    - libcpu/Kconfig
+    - libcpu/SConscript
+    - src
+    - tools
+    - Kconfig
+    - LICENSE
+    package_name: RT-Thread
+    package_type: RT-Thread_Source_Code
+    package_vendor: ''
+    package_version: latest
+    source_path_offset: rt-thread
+    target_path_offset: rt-thread
+  project_description: ''
+  project_name: ''
+  project_type: rt-thread|@full|@latest
+yaml_version: 3

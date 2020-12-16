@@ -1,0 +1,12 @@
+*.dblite
+*.bin
+*.dcf
+*.map
+*.lst
+*.pyc
+*.elf
+*.old
+*.o
+
+build
+dist
