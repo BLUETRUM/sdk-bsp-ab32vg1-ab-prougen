@@ -7,8 +7,8 @@ CROSS_TOOL  ='gcc'
 
 if os.getenv('RTT_ROOT'):
     RTT_ROOT = os.getenv('RTT_ROOT')
-# else:
-#     RTT_ROOT = r'../../..'
+else:
+    RTT_ROOT = r'../../..'
 
 if os.getenv('RTT_CC'):
     CROSS_TOOL = os.getenv('RTT_CC')
@@ -58,6 +58,7 @@ if PLATFORM == 'gcc':
 DUMP_ACTION = OBJDUMP + ' -D -S $TARGET > rtt.asm\n'
 POST_ACTION = OBJCPY + ' -O binary $TARGET rtthread.bin\n' + SIZE + ' $TARGET \n'
 POST_ACTION += './riscv32-elf-xmaker -b rtthread.xm\n'
+POST_ACTION += './riscv32-elf-xmaker -b download.xm\n'
 
 def dist_handle(BSP_ROOT, dist_dir):
     import sys

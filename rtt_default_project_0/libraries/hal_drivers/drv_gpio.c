@@ -40,9 +40,19 @@ static const hal_sfr_t port_sfr[] =
     GPIOF_BASE,
 };
 
+static uint8_t _pin_port(uint32_t pin)
+{
+    uint8_t port = 0;
+    for (port = 0; port < 3; port++) {
+        if (pin < (port_table[port].total_pin + port_table[port].delta_pin)) {
+            break;
+        }
+    }
+    return port;
+}
+
 #define PIN_NUM(port, no)       ((uint8_t)(port_table[port].total_pin + no - port_table[port].start_pin))
-#define _PIN_PORT(pin)          (uint8_t)(((pin) >> 3) & 0xFu)
-#define PIN_PORT(pin)           ((port_table[_PIN_PORT(pin)].delta_pin == 8) ? _PIN_PORT(pin) : _PIN_PORT(pin) + 1)
+#define PIN_PORT(pin)           _pin_port(pin)
 #define PORT_SFR(port)          (port_sfr[(port)])
 #define PIN_NO(pin)             (uint8_t)((pin) & 0xFu)
 

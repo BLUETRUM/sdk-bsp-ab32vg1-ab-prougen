@@ -8,8 +8,8 @@ board:
   emulator_machine: ''
   large_image: documents/images/board_large.png
   name: AB32VG1-AB-PROUGEN
-  price_cn: 238.00 CNY
-  price_global: 35.00 USD
+  price_cn: xxx CNY
+  price_global: xxx USD
   sale_contact_cn: 
   sale_contact_global: 
   small_image: documents/images/board_small.png
