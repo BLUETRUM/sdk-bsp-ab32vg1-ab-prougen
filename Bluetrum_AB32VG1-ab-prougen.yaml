@@ -56,6 +56,8 @@ template_projects:
     - .gitignore
     - .project
     - .settings
+    - makefile.targets
+    - Debug
     - applications
     - board
     - cconfig.h
