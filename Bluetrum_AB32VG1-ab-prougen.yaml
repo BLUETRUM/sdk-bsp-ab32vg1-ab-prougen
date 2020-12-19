@@ -32,8 +32,8 @@ docs:
   file: documents/manuals/AB32VG1-user-manual.pdf
   title: AB32VG1 PROUGEN
 - category: sheet
-  file: documents/sheet/STM32L475xx Datasheet.pdf
-  title: STM32L475xx Datasheet
+  file: documents/sheet/AB5301A DataSheet.pdf
+  title: AB32VG1 Datasheet
 example_projects: []
 features:
 - On-board XLink
