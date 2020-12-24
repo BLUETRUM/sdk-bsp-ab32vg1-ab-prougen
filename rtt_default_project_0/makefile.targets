@@ -1,5 +1,6 @@
 rtthread.siz:
 	riscv64-unknown-elf-size --format=berkeley "rtthread.elf"
+	sh ../pre_build.sh
 	riscv32-elf-xmaker -b rtthread.xm
 	riscv32-elf-xmaker -b download.xm
 
@@ -9,4 +10,4 @@ clean2:
 	-@echo ' '
 
 
-*.elf: $(wildcard D:/RT-ThreadStudio2000/workspace/10220/link.lds)
+*.elf: $(wildcard D:/Softwares/RT-ThreadStudio/workspace/ab32vg1/link.lds)

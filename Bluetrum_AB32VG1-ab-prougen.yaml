@@ -47,7 +47,7 @@ features_zh:
 - Examples:36 bare-metal demos and 30 RT-Thread demos
 pkg_type: Board_Support_Packages
 pkg_vendor: Bluetrum
-pkg_version: 1.0.0
+pkg_version: 1.0.1
 template_projects:
 - builtin_files:
   - files_and_folders:
@@ -56,8 +56,6 @@ template_projects:
     - .gitignore
     - .project
     - .settings
-    - makefile.targets
-    - Debug
     - applications
     - board
     - cconfig.h
@@ -67,6 +65,8 @@ template_projects:
     - libcpu
     - libraries
     - link.lds
+    - makefile.targets
+    - pre_build.sh
     - README.md
     - riscv32-elf-xmaker.exe
     - rtconfig.h
