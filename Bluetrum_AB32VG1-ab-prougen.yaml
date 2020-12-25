@@ -39,12 +39,12 @@ features:
 - On-board XLink
 - SRAM:192K
 - Audio:on chip
-- Examples:36 bare-metal demos and 30 RT-Thread demos
+# - Examples:36 bare-metal demos and 30 RT-Thread demos
 features_zh:
 - On-board XLink
 - SRAM:192K
 - Audio:on chip
-- Examples:36 bare-metal demos and 30 RT-Thread demos
+# - Examples:36 bare-metal demos and 30 RT-Thread demos
 pkg_type: Board_Support_Packages
 pkg_vendor: Bluetrum
 pkg_version: 1.0.1

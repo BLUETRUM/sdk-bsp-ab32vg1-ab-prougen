@@ -1,4 +1,5 @@
 *.dblite
+*.bin
 *.dcf
 *.map
 *.lst

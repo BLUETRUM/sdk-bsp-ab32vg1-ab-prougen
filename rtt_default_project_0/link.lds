@@ -60,14 +60,14 @@ SECTIONS
     } > ram1 AT > flash
 
     .comm : {
-        KEEP(*(.vector))
-        EXCLUDE_FILE(*hal_drivers**.o *ab32vg1_hal**.o *components*finsh**.o *components*libc**.o *rt-thread*src**.o *kernel*src**.o *romfs.o *lib_a**.o) *(.text*)
-        *idle.o(.text*)
-        *ipc.o(.text*)
-        *irq.o(.text*)
-        *scheduler.o(.text*)
-        *timer.o(.text*)
-        *kservice.o(.text*)
+        KEEP (*(.vector))
+        EXCLUDE_FILE (*hal_drivers**.o *ab32vg1_hal**.o *components*finsh**.o *components*libc**.o *rt-thread*src**.o *kernel*src**.o *romfs.o *lib_a**.o) *(.text*)
+        *idle.o (.text*)
+        *ipc.o (.text*)
+        *irq.o (.text*)
+        *scheduler.o (.text*)
+        *timer.o (.text*)
+        *kservice.o (.text*)
         EXCLUDE_FILE (*romfs.o *lib_a**.o) *(.rodata*)
         *(.srodata*)
         *(.rela*)
