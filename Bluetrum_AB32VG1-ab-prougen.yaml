@@ -1,6 +1,6 @@
 board:
-  buy_url_cn: https://detail.tmall.com/item.htm?id=609759187128
-  buy_url_global: https://detail.tmall.com/item.htm?id=609759187128
+  buy_url_cn: https://item.taobao.com/item.htm?id=634910540361
+  buy_url_global: https://item.taobao.com/item.htm?id=634910540361
   debug_interface: SWD
   debugger: ST-LINK
   description_en: The PROUGEN G1 is a board made by BLUETRUM. The onboard resources are very rich and the integration is very high.
