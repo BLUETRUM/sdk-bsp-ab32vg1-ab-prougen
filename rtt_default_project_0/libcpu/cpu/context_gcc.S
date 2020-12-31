@@ -77,12 +77,12 @@ enable_int_ret:
     sw      x30, 108(sp)
     sw      x31, 112(sp)
 
-    lw      a5, EPC(zero)                  	//Saves current program counter (EPC) as task program counter
+    lw      a5, EPC(zero)                                       //Saves current program counter (EPC) as task program counter
     sw      a5, 116(sp)
     lw      a5, EPICCON(zero)
     sw      a5, 120(sp)
 
-    sw      sp, rt_cur_thread_sp, a4  		//store sp in preempted tasks tcb
+    sw      sp, rt_cur_thread_sp, a4                            //store sp in preempted tasks tcb
     .endm
 
 
@@ -90,7 +90,7 @@ enable_int_ret:
 .macro restore_context
 
     la      a5, rt_cur_thread_sp
-    lw      sp, 0(a5)                       //get new task stack pointer
+    lw      sp, 0(a5)                                           //get new task stack pointer
 
     /* Load task program counter  EPC*/
     lw      a5, 116(sp)
@@ -140,7 +140,7 @@ enable_int_ret:
  */
     .globl rt_hw_context_switch_to
 rt_hw_context_switch_to:
-    sw      zero, rt_interrupt_from_thread, a4                   	/*set from thread to 0*/
+    sw      zero, rt_interrupt_from_thread, a4                      /*set from thread to 0*/
     sw      a0, rt_interrupt_to_thread, a4                          /*set rt_interrupt_to_thread*/
 
     sb      zero, rt_interrupt_nest, a4                             /*rt_interrupt_nest = 0*/
@@ -210,8 +210,8 @@ rt_soft_isr:
 low_prio_irq:
     save_context
 
-    lw		a5, rt_interrupt_nest
-    bnez	a5, _low_prio_irq_exit
+    lw      a5, rt_interrupt_nest
+    bnez    a5, _low_prio_irq_exit
 
     lw      a5, cpu_irq_comm_hook
     jalr    a5
