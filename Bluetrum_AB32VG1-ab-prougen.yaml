@@ -32,17 +32,19 @@ docs:
   file: documents/manuals/AB32VG1-user-manual.pdf
   title: AB32VG1 PROUGEN
 - category: sheet
-  file: documents/sheet/AB5301A DataSheet.pdf
+  file: documents/sheet/AB32VG1_DataSheet.pdf
   title: AB32VG1 Datasheet
 example_projects: []
 features:
 - On-board XLink
 - SRAM:192K
+- Flash:8MBit
 - Audio:on chip
 # - Examples:36 bare-metal demos and 30 RT-Thread demos
 features_zh:
 - On-board XLink
 - SRAM:192K
+- Flash:8MBit
 - Audio:on chip
 # - Examples:36 bare-metal demos and 30 RT-Thread demos
 pkg_type: Board_Support_Packages
