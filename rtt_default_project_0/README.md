@@ -12,7 +12,7 @@
 
 ## 开发板介绍
 
-ab32vg1-prougen 是 中科蓝讯(Bluetrum) 推出的一款基于 RISC-V 内核的开发板，最高主频为 120Mhz，该开发板芯片为 AB5301A。
+ab32vg1-prougen 是 中科蓝讯(Bluetrum) 推出的一款基于 RISC-V 内核的开发板，最高主频为 120Mhz，该开发板芯片为 AB32VG1。
 
 开发板外观如下图所示：
 
@@ -20,7 +20,7 @@ ab32vg1-prougen 是 中科蓝讯(Bluetrum) 推出的一款基于 RISC-V 内核�
 
 该开发板常用 **板载资源** 如下：
 
-- MCU：AB5301A，主频 120MHz，可超频至 192MHz，8Mbit FLASH ，192KB RAM。
+- MCU：AB32VG1，主频 120MHz，可超频至 192MHz，8Mbit FLASH ，192KB RAM。
 - 常用外设
   - LED: RGB灯
   - 按键: 3 个, USER(s2,s3) and RESET(s1)
@@ -73,7 +73,7 @@ ab32vg1-prougen 是 中科蓝讯(Bluetrum) 推出的一款基于 RISC-V 内核�
 
 #### 编译下载
 
-运行 `studio` 编译得到 `.dcf` 固件，通过 `downloader` 进行下载
+通过 `RT-Thread Studio` 或者 `scons` 编译得到 `.dcf` 固件，通过 `Downloader` 进行下载
 
 #### 运行结果
 
