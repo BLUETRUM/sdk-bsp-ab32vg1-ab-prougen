@@ -36,17 +36,33 @@ docs:
   title: AB32VG1 Datasheet
 example_projects: []
 features:
-- On-board XLink
-- SRAM:192K
-- Flash:8MBit
-- Audio:on chip
-# - Examples:36 bare-metal demos and 30 RT-Thread demos
+- "Microcontroller: AB32VG1 (32-bit RISC-V processor)"
+- "Main frequency: 120MHz"
+- "Memory: Built-in 8MBit Flash, 192KB SRAM"
+- "Working voltage: 3.0~5.0V"
+- "Peripheral resources: Timer (32-bit)*3, WatchDog, UART*3, SPI*2, IR*2, SDIO*1, SPDIF*1, I2S*1, USBFS*1, ADC*2 (6 external channels 10-bit), RTC*1, PMU*1"
+- "Power supply: 5V USB"
+- "Size: 6cm*9cm"
+- "USB Type-C interface: download, serial communication function"
+- "Micro USB interface: USB-OTG function"
+- "microSD card slot: externally expanded SD card storage"
+- "Arduino interface*2: SPI, I2C"
+- "button: reset*1, user button*2"
+- "RGB LED"
 features_zh:
-- On-board XLink
-- SRAM:192K
-- Flash:8MBit
-- Audio:on chip
-# - Examples:36 bare-metal demos and 30 RT-Thread demos
+- "微控制器: AB32VG1(32位 RISC-V 处理器)"
+- "主频: 120MHz"
+- "内存: 内置 8MBit Flash、192KB SRAM"
+- "工作电压: 3.0~5.0V"
+- "外设资源: Timer(32位)*3、WatchDog、UART*3、SPI*2、IR*1、SDIO*1、SPDIF*1、I2S*1、USBFS*1、ADC(6路外部通道 10bit)*1、RTC*1、PMU*1"
+- "供电方式: 5V USB"
+- "板子尺寸: 6cm*9cm"
+- "USB Type-C 接口: 下载、串口通信功能"
+- "USB Type-A 接口: USB-OTG 功能"
+- "mircoSD 卡插槽: 外扩 SD 卡存储"
+- "Arduino 接口: SPI、I2C"
+- "按键: 复位*1、用户按键*2"
+- "RGB LED"
 pkg_type: Board_Support_Packages
 pkg_vendor: Bluetrum
 pkg_version: 1.0.1
