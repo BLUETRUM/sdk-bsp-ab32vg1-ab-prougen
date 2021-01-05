@@ -10,22 +10,22 @@ board:
   name: AB32VG1-AB-PROUGEN
   price_cn: xxx CNY
   price_global: xxx USD
-  sale_contact_cn: 
-  sale_contact_global: 
+  sale_contact_cn: ""
+  sale_contact_global: ""
   small_image: documents/images/board_small.png
   vendor: Bluetrum
   version: Rev.A
 chip:
   chip_name: AB32VG1
-  clock_source: HSE
-  device_vendor: Bluetrum
+  clock_source: ''
+  device_vendor: ''
   family_name: RISCV
-  rx_name: PA10
-  series_name: STM32L4
-  source_freq: '8000000'
-  sub_series_name: STM32L475
-  target_freq: '240000000'
-  tx_name: PA9
+  rx_name: ''
+  series_name: ''
+  source_freq: ''
+  sub_series_name: ''
+  target_freq: ''
+  tx_name: ''
   uart_name: UART0
 docs:
 - category: manual
