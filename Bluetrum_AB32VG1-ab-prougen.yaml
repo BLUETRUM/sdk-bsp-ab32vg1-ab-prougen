@@ -35,7 +35,7 @@ docs:
   file: documents/sheet/AB32VG1_DataSheet.pdf
   title: AB32VG1 Datasheet
 - category: register
-  file: documents/sheet/AB32VG1_Register.pdf
+  file: documents/register/AB32VG1_Register.pdf
   title: AB32VG1 Register
 example_projects: []
 features:
