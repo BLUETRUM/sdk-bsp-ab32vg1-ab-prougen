@@ -41,8 +41,10 @@ SECTIONS
         PROVIDE(__ctors_end__ = .);
 
         . = ALIGN(4);
-        *components*drivers**.o(.text* .rodata*)
-        *device.o(.text*)
+        *components*drivers**.o (.text*)
+        *device.o (.text*)
+        *components.o (.text*)
+        *idle.o (.text*)
     } > ram1 AT > flash
 
     .rti : {
@@ -66,6 +68,7 @@ SECTIONS
     } > ram1 AT > flash
 
     .comm : {
+        . = ALIGN(4);
         KEEP(*(.vector))
         EXCLUDE_FILE(*components*finsh**.o *components*libc**.o *romfs.o 
         *lib_a**.o *divdi3.o *moddi3.o *divdf3.o *muldf3.o *eqtf2.o *getf2.o
@@ -82,7 +85,6 @@ SECTIONS
         *(.rela*)
         *(.data*)
 	    *(.sdata*)
-        . = ALIGN(512);
     } > comm AT > flash
 
     .bss (NOLOAD):
