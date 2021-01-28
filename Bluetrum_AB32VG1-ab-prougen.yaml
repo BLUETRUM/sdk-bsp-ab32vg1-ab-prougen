@@ -68,7 +68,7 @@ features_zh:
 - "RGB LED"
 pkg_type: Board_Support_Packages
 pkg_vendor: Bluetrum
-pkg_version: 1.0.2
+pkg_version: 1.0.3
 template_projects:
 - builtin_files:
   - files_and_folders:
