@@ -29,7 +29,7 @@ chip:
   uart_name: UART0
 docs:
 - category: manual
-  file: documents/manuals/AB32VG1-user-manual.pdf
+  file: documents/manuals/AB32VG1_User_Manual.pdf
   title: AB32VG1 PROUGEN
 - category: sheet
   file: documents/sheet/AB32VG1_DataSheet.pdf
@@ -37,6 +37,9 @@ docs:
 - category: register
   file: documents/register/AB32VG1_Register.pdf
   title: AB32VG1 Register
+- category: schematic
+  file: documents/schematic/AB32VG1_Prougen_Schematic_V1_0.pdf
+  title: AB32VG1 schematic
 example_projects: []
 features:
 - "Microcontroller: AB32VG1 (32-bit RISC-V processor)"

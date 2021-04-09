@@ -45,9 +45,10 @@ ab32vg1-prougen 是 中科蓝讯(Bluetrum) 推出的一款基于 RISC-V 内核�
 | I2C          |     支持     | 软件 I2C                                  |
 | RTC          |     支持     |                                           |
 | WDT          |     支持     |                                           |
-| FLASH        |   即将支持   |                                           |
+| FLASH        |   即将支持   | 对接 FAL                                  |
 | TIMER        |     支持     |                                           |
 | PWM          |     支持     | LPWM 的 G1 G2 G3 之间是互斥的，只能三选一 |
+| FM receive   |   即将支持   |                                           |
 | USB Device   |   暂不支持   |                                           |
 | USB Host     |   暂不支持   |                                           |
 
@@ -109,10 +110,24 @@ msh >
 
 编译报错的时候，如果出现重复定义的报错，可能需要在 `cconfig.h` 中手动添加以下配置
 
-```
+``` c
 #define HAVE_SIGEVENT 1
 #define HAVE_SIGINFO 1
 #define HAVE_SIGVAL 1
+```
+
+所有在中断中使用的函数或数据需要放在 RAM 中，否则会导致系统运行报错。具体做法可以参考下面
+
+``` c
+RT_SECTION(".irq.example.str")
+static const char example_info[] = "example 0x%x";
+
+RT_SECTION(".irq.example")
+void example_isr(void)
+{
+    rt_kprintf(example_info, 11);
+    ...
+}
 ```
 
 ## 维护人信息

@@ -47,26 +47,42 @@ SECTIONS
         PROVIDE(__ctors_end__ = .);
 
         . = ALIGN(4);
-        *components*drivers**.o (.text*)
-        *components.o (.text*)
+        *save-restore.o (.text* .rodata*)
+        *libcpu*cpu*context_gcc.o (.text* .rodata*)
+        *libcpu*cpu*interrupt.o (.text* .rodata*)
+        *libcpu**.o (.rodata*)
+
+        *components*drivers*misc*pin.o(.text*)
+
+        . = ALIGN(4);
+        *src*ipc.o (.text* .rodata*)
+        *src*irq.o (.text* .rodata*)
+        *src*object.o (.text* .rodata*)
+        *src*thread.o (.text* .rodata*)
+        *src*timer.o (.text* .rodata*)
+        *src*mempool.o (.text* .rodata*)
+        *src*scheduler.o (.text* .rodata*)
+        *src*clock.o (.text* .rodata*)
+        *src*kservice.o (.text* .rodata*)
+        *src*device.o (.text* .rodata*)
+        *src*idle.o (.text* .rodata*)
+        *src*components.o (.text* .rodata*)
     } > ram1 AT > flash
 
     .comm __comm_vma : {
         . = ALIGN(4);
         KEEP(*(.vector))
-        EXCLUDE_FILE(*components*finsh**.o *components*libc**.o *dfs*filesystems**.o  
-        *romfs.o *lib_a**.o *divdi3.o *moddi3.o *divdf3.o *muldf3.o *eqtf2.o *getf2.o
-        *letf2.o *multf3.o *subtf3.o *fixtfsi.o *floatsitf.o *extenddftf2.o
-        *trunctfdf2.o *_clzsi2.o *cp-demangle.o *unwind*.o
-        *fixdfsi.o *addsf3.o *divsf3.o *eqsf2.o *gesf2.o *float*.o
-        *lesf2.o *mulsf3.o *subsf3.o *fixsfsi.o *fixunssfsi.o) *(.text)
-        *finsh*shell.o (.text*)
+        *(.irq*)
+        /*applications**.o (.text .rodata)*/
+        *hal_libraries*ab32vg1_hal**.o (.text .rodata)
         *(.text.unlikely)
         *(.text.startup)
-        EXCLUDE_FILE (*components*libc**.o *dfs*filesystems**.o *romfs.o *lib_a**.o 
-        *cp-demangle.o *divdf3.o *muldf3.o *multf3.o *unwind*.o *_clz.o) *(.rodata)
-        *(.rodata.name)
-        EXCLUDE_FILE(*lib_a**.o *cp-demangle.o *cp-demangle.o) *(.rodata.str1.4)
+        *hal_drivers**.o (.rodata)
+        *audio*drv_sound.o (.rodata)
+        *system_ab32vgx.o (.rodata)
+        EXCLUDE_FILE(*lib_a**.o *cp-demangle.o *cp-demangle.o 
+        *src*mem.o *src*memheap.o *dfs**.o *components.o *drivers*sdio**.o *cmd.o *msh_file.o
+        *drv_sdio.o *drv_wdt.o) *(.rodata.str1.4)
         EXCLUDE_FILE(*lib_a**.o *unwind*.o) *(.srodata)
         *(.rela*)
         *(.data*)
