@@ -3,8 +3,8 @@ __max_flash_size = 1024k;
 
 __data_ram_size = 8k;
 __stack_ram_size = 4k;
-__comm_ram_size = 83k;
-__heap_ram_size = 29k;
+__comm_ram_size = 42k;
+__heap_ram_size = 70k;
 
 __base = 0x10000000;
 
@@ -53,6 +53,7 @@ SECTIONS
         *libcpu**.o (.rodata*)
 
         *components*drivers*misc*pin.o(.text*)
+        *components*drivers*misc*adc.o(.text*)
 
         . = ALIGN(4);
         *src*ipc.o (.text* .rodata*)
