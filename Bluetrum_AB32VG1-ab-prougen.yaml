@@ -37,9 +37,12 @@ docs:
 - category: register
   file: documents/register/AB32VG1_Register.pdf
   title: AB32VG1 Register
-- category: schematic
-  file: documents/schematic/AB32VG1_Prougen_Schematic_V1_0.pdf
-  title: AB32VG1 schematic
+- category: schematic V01
+  file: documents/schematic/AB32VG1_Prougen_Schematic_V01.pdf
+  title: AB32VG1 schematic V01
+- category: schematic V02
+  file: documents/schematic/AB32VG1_Prougen_Schematic_V02.pdf
+  title: AB32VG1 schematic V02
 example_projects: []
 features:
 - "Microcontroller: AB32VG1 (32-bit RISC-V processor)"
@@ -71,7 +74,7 @@ features_zh:
 - "RGB LED"
 pkg_type: Board_Support_Packages
 pkg_vendor: Bluetrum
-pkg_version: 1.0.5
+pkg_version: 1.0.6
 template_projects:
 - builtin_files:
   - files_and_folders:
