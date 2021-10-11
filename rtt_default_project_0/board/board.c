@@ -30,6 +30,7 @@ static struct rt_mutex mutex_cache = {0};
 extern volatile rt_uint8_t rt_interrupt_nest;
 extern uint32_t __heap_start, __heap_end;
 
+#ifdef RT_USING_CONSOLE
 void hal_printf(const char *fmt, ...)
 {
     rt_device_t console = rt_console_get_device();
@@ -65,6 +66,7 @@ void hal_printf(const char *fmt, ...)
 #endif
     va_end(args);
 }
+#endif
 
 RT_SECTION(".irq.timer")
 void timer0_isr(int vector, void *param)
@@ -207,11 +209,15 @@ void rt_hw_console_output(const char *str)
 RT_SECTION(".irq.err")
 void exception_isr(void)
 {
+#if defined(RT_USING_FINSH) && defined(MSH_USING_BUILT_IN_COMMANDS)
     extern long list_thread(void);
+#endif
     sys_error_hook(1);
 
+#ifdef RT_USING_CONSOLE
     rt_console_set_device(RT_NULL);
     rt_kprintf(stack_info, rt_thread_self()->sp, rt_thread_self()->name);
+#endif
 
     while(1);
 }
