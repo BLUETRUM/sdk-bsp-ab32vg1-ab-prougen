@@ -8,3 +8,6 @@ clean2:
 	-$(RM) $(OBJS) *.elf
 	-@echo ' '
 
+
+
+*.elf: $(wildcard ../link.lds)
