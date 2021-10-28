@@ -66,16 +66,17 @@
 /* Command shell */
 
 #define RT_USING_FINSH
+#define RT_USING_MSH
+#define FINSH_USING_MSH
 #define FINSH_THREAD_NAME "tshell"
+#define FINSH_THREAD_PRIORITY 20
+#define FINSH_THREAD_STACK_SIZE 2048
 #define FINSH_USING_HISTORY
 #define FINSH_HISTORY_LINES 5
 #define FINSH_USING_SYMTAB
-#define FINSH_USING_DESCRIPTION
-#define FINSH_THREAD_PRIORITY 20
-#define FINSH_THREAD_STACK_SIZE 2048
 #define FINSH_CMD_SIZE 80
-#define FINSH_USING_MSH
-#define FINSH_USING_MSH_DEFAULT
+#define MSH_USING_BUILT_IN_COMMANDS
+#define FINSH_USING_DESCRIPTION
 #define FINSH_ARG_MAX 10
 /* end of Command shell */
 
@@ -162,6 +163,10 @@
 
 /* multimedia packages */
 
+
+/* u8g2: a monochrome graphic library */
+
+/* end of u8g2: a monochrome graphic library */
 /* end of multimedia packages */
 
 /* tools packages */
@@ -181,6 +186,8 @@
 
 /* peripheral libraries and drivers */
 
+#define PKG_USING_BLUETRUM_SDK
+#define PKG_USING_BLUETRUM_SDK_LATEST_VERSION
 /* end of peripheral libraries and drivers */
 
 /* AI packages */
@@ -188,7 +195,6 @@
 /* end of AI packages */
 
 /* miscellaneous packages */
-
 
 /* samples: kernel and components samples */
 
@@ -201,6 +207,8 @@
 /* end of RT-Thread online packages */
 
 /* Hardware Drivers Config */
+
+#define SOC_AB32VG1
 
 /* Onboard Peripheral Drivers */
 

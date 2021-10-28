@@ -90,6 +90,7 @@ template_projects:
     - header.bin
     - Kconfig
     - libcpu
+    - packages
     - libraries
     - link.lds
     - makefile.targets
