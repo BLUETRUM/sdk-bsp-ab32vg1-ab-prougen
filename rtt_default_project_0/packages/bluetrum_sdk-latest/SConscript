@@ -47,13 +47,16 @@ ASFLAGS          = ""
 CPPDEFINES       = []
 LOCAL_CPPDEFINES = []
 
-LIBS             = ['hal'] 
+LIBS             = ['hal']
 LIBPATH          = [CWD]
 
 LINKFLAGS        = "" 
 
 SOURCES_IGNORE   = []
 CPPPATH_IGNORE   = []
+
+if GetDepend(['PKG_USING_BLUETRUM_NIMBLE']):
+    LIBS        += ['btctrl']
 
 #---------------------------------------------------------------------------------
 # Main target
@@ -70,5 +73,12 @@ objs = DefineGroup(name = PKGNAME, src = SOURCES, depend = DEPENDS,
                    LIBS             = LIBS, 
                    LIBPATH          = LIBPATH,
                    LINKFLAGS        = LINKFLAGS)  
+
+cwd  = GetCurrentDir()
+list = os.listdir(cwd)
+
+for item in list:
+    if os.path.isfile(os.path.join(CWD, item, 'SConscript')):
+        objs = objs + SConscript(os.path.join(item, 'SConscript'))
 
 Return("objs")
