@@ -56,10 +56,10 @@ RT_SECTION(".btmem") static struct os_mempool trans_buf_acl_pool;
 RT_SECTION(".btmem") static struct os_mbuf_pool trans_buf_acl_mbuf_pool;
 
 /* Host interface */
-RT_SECTION(".btmem") static ble_hci_trans_rx_cmd_fn *ble_hci_rtt_rx_cmd_hs_cb;
-RT_SECTION(".btmem") static void *ble_hci_rtt_rx_cmd_hs_arg;
-RT_SECTION(".btmem") static ble_hci_trans_rx_acl_fn *ble_hci_rtt_rx_acl_hs_cb;
-RT_SECTION(".btmem") static void *ble_hci_rtt_rx_acl_hs_arg;
+static ble_hci_trans_rx_cmd_fn *ble_hci_rtt_rx_cmd_hs_cb;
+static void *ble_hci_rtt_rx_cmd_hs_arg;
+static ble_hci_trans_rx_acl_fn *ble_hci_rtt_rx_acl_hs_cb;
+static void *ble_hci_rtt_rx_acl_hs_arg;
 
 /* Called by NimBLE host to reset HCI transport state (i.e. on host reset) */
 int

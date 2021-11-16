@@ -68,6 +68,28 @@ void hal_printf(const char *fmt, ...)
 }
 #endif
 
+RT_SECTION(".irq")
+void os_interrupt_enter(void)
+{
+    rt_interrupt_enter();
+}
+
+RT_SECTION(".irq")
+void os_interrupt_leave(void)
+{
+    rt_interrupt_leave();
+}
+
+typedef void (*isr_t)(void);
+RT_SECTION(".irq")
+isr_t register_isr(int vector, isr_t isr)
+{
+    char buf[8] = {0};
+    rt_snprintf(buf, sizeof(buf), "sys%d", vector);
+    rt_isr_handler_t handle = (rt_isr_handler_t)isr;
+    rt_hw_interrupt_install(vector, handle, RT_NULL, buf);
+}
+
 RT_SECTION(".irq.timer")
 void timer0_isr(int vector, void *param)
 {
