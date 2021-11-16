@@ -72,7 +72,6 @@ static void btctrl_thread_entry(void *param)
 {
     while (1) {
         rt_sem_take(psem_btctrl, RT_WAITING_FOREVER);
-        GPIOA ^= BIT(1);
         bb_run_loop();
     }
 }
@@ -118,7 +117,6 @@ static void bthw_thread_entry(void *param)
 
     while(1) {
         rt_sem_take(psem_bthw, RT_WAITING_FOREVER);
-        GPIOA ^= BIT(0);
         if (bthw_soft_flag) {
             bthw_soft_flag = 0;
             bthw_soft_isr();
@@ -131,13 +129,6 @@ static void bthw_thread_entry(void *param)
 void bthw_irq_init(void);
 static int bthw_thread_init(void)
 {
-    GPIOAFEN &= ~(BIT(0) | BIT(1) | BIT(2) | BIT(3));
-    GPIOADE  |= (BIT(0) | BIT(1) | BIT(2) | BIT(3));
-    GPIOADIR &= ~(BIT(0) | BIT(1) | BIT(2) | BIT(3));
-    GPIOACLR |= (BIT(0) | BIT(1) | BIT(2) | BIT(3));
-
-    void bb_off(void);
-    bb_off();
     bthw_irq_init();
     psem_bthw = rt_sem_create("bthw", 0, RT_IPC_FLAG_FIFO);
 
