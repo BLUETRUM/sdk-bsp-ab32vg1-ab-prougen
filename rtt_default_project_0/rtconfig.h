@@ -101,6 +101,7 @@
 /* POSIX layer and C standard library */
 
 #define RT_USING_LIBC
+#define RT_LIBC_USING_TIME
 #define RT_LIBC_DEFAULT_TIMEZONE 8
 /* end of POSIX layer and C standard library */
 
@@ -163,6 +164,9 @@
 
 /* multimedia packages */
 
+/* LVGL: powerful and easy-to-use embedded GUI library */
+
+/* end of LVGL: powerful and easy-to-use embedded GUI library */
 
 /* u8g2: a monochrome graphic library */
 
@@ -178,6 +182,10 @@
 /* acceleration: Assembly language or algorithmic acceleration packages */
 
 /* end of acceleration: Assembly language or algorithmic acceleration packages */
+
+/* CMSIS: ARM Cortex-M Microcontroller Software Interface Standard */
+
+/* end of CMSIS: ARM Cortex-M Microcontroller Software Interface Standard */
 
 /* Micrium: Micrium software products porting for RT-Thread */
 
@@ -209,9 +217,11 @@
 /* Hardware Drivers Config */
 
 #define SOC_AB32VG1
+#define PKG_USING_BLUETRUM_NIMBLE
 
 /* Onboard Peripheral Drivers */
 
+#define BSP_USING_NIMBLE
 /* end of Onboard Peripheral Drivers */
 
 /* On-chip Peripheral Drivers */
@@ -220,9 +230,6 @@
 #define BSP_USING_UART0
 #define BSP_UART0_FIFO_SIZE 10
 /* end of On-chip Peripheral Drivers */
-
-/* Board extended module Drivers */
-
 /* end of Hardware Drivers Config */
 #define BOARD_BLUETRUM_EVB
 

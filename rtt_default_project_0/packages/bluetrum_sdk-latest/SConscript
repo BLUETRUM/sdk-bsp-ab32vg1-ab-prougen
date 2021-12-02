@@ -41,6 +41,7 @@ LOCAL_ASFLAGS    = ""
 
 # CPPPATH          = [GetCurrentDir(), os.path.join(GetCurrentDir(), 'include')]
 CPPPATH          = [CWD]
+CPPPATH         += [CWD + '/blue_driver']
 CCFLAGS          = "" 
 ASFLAGS          = ""
 

@@ -116,9 +116,55 @@ void timer0_cfg(uint32_t ticks)
     TMR0CON |= BIT(0); // EN
 }
 
-void hal_mdelay(uint32_t ms)
+uint32_t hal_get_ticks(void)
 {
-    rt_thread_mdelay(ms);
+    return rt_tick_get();
+}
+
+void hal_mdelay(uint32_t nms)
+{
+    rt_thread_mdelay(nms);
+}
+
+void hal_udelay(uint32_t nus)
+{
+    rt_hw_us_delay(nus);
+}
+
+/**
+ * The time delay function.
+ *
+ * @param us microseconds.
+ */
+RT_SECTION(".com_text")
+void rt_hw_us_delay(rt_uint32_t us)
+{
+    rt_uint32_t ticks;
+    rt_uint32_t told, tnow, tcnt = 0;
+    rt_uint32_t reload = TMR0PR;
+
+    ticks = us * reload / (1000 / RT_TICK_PER_SECOND);
+    told = TMR0CNT;
+    while (1)
+    {
+        tnow = TMR0CNT;
+        if (tnow != told)
+        {
+            if (tnow < told)
+            {
+                tcnt += told - tnow;
+            }
+            else
+            {
+                tcnt += reload - tnow + told;
+            }
+            told = tnow;
+            if (tcnt >= ticks)
+            {
+                break;
+            }
+        }
+    }
 }
 
 void rt_hw_systick_init(void)
@@ -171,14 +217,13 @@ RT_SECTION(".irq.cache")
 void cache_init(void)
 {
     os_cache_init();
-    rt_mutex_init(&mutex_spiflash, "flash_mutex", RT_IPC_FLAG_FIFO);
-    rt_mutex_init(&mutex_cache, "cache_mutex", RT_IPC_FLAG_FIFO);
+    rt_mutex_init(&mutex_spiflash, "flash_mutex", RT_IPC_FLAG_PRIO);
+    rt_mutex_init(&mutex_cache, "cache_mutex", RT_IPC_FLAG_PRIO);
 }
 
 RT_SECTION(".irq.cache")
 void os_spiflash_lock(void)
 {
-    // if (rt_thread_self()->stat == RT_THREAD_RUNNING) {
     if ((rt_thread_self() != RT_NULL) && (rt_interrupt_nest == 0)) {
         rt_mutex_take(&mutex_spiflash, RT_WAITING_FOREVER);
     }
@@ -187,7 +232,6 @@ void os_spiflash_lock(void)
 RT_SECTION(".irq.cache")
 void os_spiflash_unlock(void)
 {
-    // if (rt_thread_self()->stat == RT_THREAD_RUNNING) {
     if ((rt_thread_self() != RT_NULL) && (rt_interrupt_nest == 0)) {
         rt_mutex_release(&mutex_spiflash);
     }
@@ -196,7 +240,6 @@ void os_spiflash_unlock(void)
 RT_SECTION(".irq.cache")
 void os_cache_lock(void)
 {
-    // if (rt_thread_self()->stat == RT_THREAD_RUNNING) {
     if ((rt_thread_self() != RT_NULL) && (rt_interrupt_nest == 0)) {
         rt_mutex_take(&mutex_cache, RT_WAITING_FOREVER);
     }
@@ -205,7 +248,6 @@ void os_cache_lock(void)
 RT_SECTION(".irq.cache")
 void os_cache_unlock(void)
 {
-    // if (rt_thread_self()->stat == RT_THREAD_RUNNING) {
     if ((rt_thread_self() != RT_NULL) && (rt_interrupt_nest == 0)) {
         rt_mutex_release(&mutex_cache);
     }
@@ -222,6 +264,8 @@ void rt_hw_console_output(const char *str)
 /**
  * @brief print exception error
  * @note Every message needed to print, must put in .comm exction.
+ * @note (IRQ in Flash: %x %x - %x %x\n, -, rt_interrupt_nest, PC, miss_addr)
+ *       miss_addr: The address in map file minus 0x10000000
  */
 RT_SECTION(".irq.err")
 void exception_isr(void)
