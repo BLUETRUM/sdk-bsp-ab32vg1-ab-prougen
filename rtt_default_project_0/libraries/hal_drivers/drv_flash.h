@@ -15,17 +15,17 @@
 
 /**
  * @brief Read a block of data
- * 
+ *
  * @param buf output data
  * @param addr
  * @param len less than 512
- * @return uint16_t 
+ * @return uint16_t
  */
 uint16_t os_spiflash_read(void *buf, uint32_t addr, uint16_t len);
 
 /**
  * @brief Write a block of data
- * 
+ *
  * @param buf input data
  * @param addr 256 alignment
  * @param len 256 alignment
@@ -34,7 +34,7 @@ void os_spiflash_program(const void *buf, uint32_t addr, uint16_t len);
 
 /**
  * @brief Erases a block of data
- * 
+ *
  * @param addr 4k alignment
  */
 void os_spiflash_erase(uint32_t addr);
