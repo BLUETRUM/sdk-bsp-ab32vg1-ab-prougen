@@ -32,6 +32,14 @@ void delay_5ms(uint32_t n)
     rt_thread_mdelay(5*n);
 }
 
+void bt_get_local_bd_addr(uint8_t *addr)
+{
+    uint8_t addr_table[6] = {0x41, 0x42, 0x00, 0x00, 0x00};
+    memcpy(addr, addr_table, 6);
+}
+
+#ifdef PKG_USING_BLUETRUM_NIMBLE
+
 int hci_transport_send_acl_to_host(uint8_t *buf, uint16_t size);
 int hci_transport_send_evt_to_host(uint8_t *buf, uint8_t size);
 RT_SECTION(".com_text.stack.hci_recv")
@@ -50,12 +58,6 @@ void hci_host_recv_packet(uint8_t *buf, int len)
             hci_transport_send_evt_to_host(buf+1, len-1);
             break;
     }
-}
-
-void bt_get_local_bd_addr(uint8_t *addr)
-{
-    uint8_t addr_table[6] = {0x41, 0x42, 0x00, 0x00, 0x00};
-    memcpy(addr, addr_table, 6);
 }
 
 /* btctrl thread */
@@ -148,3 +150,27 @@ static int bthw_thread_init(void)
     return 0;
 }
 INIT_APP_EXPORT(bthw_thread_init);
+
+#else
+
+RT_SECTION(".com_text.stack.hci_recv")
+void hci_host_recv_packet(uint8_t *buf, int len)
+{
+}
+
+RT_SECTION(".com_text")
+void nanos_event_set_trigger(void)
+{
+}
+
+RT_SECTION(".com_text")
+void bthw_thread_post(void)
+{
+}
+
+RT_SECTION(".com_text")
+void bthw_soft_kick(void)
+{
+}
+
+#endif
