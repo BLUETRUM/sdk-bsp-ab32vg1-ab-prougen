@@ -1,2 +1,2 @@
 eclipse.preferences.version=1
-toolchain.path.512258282=${toolchain_install_path}/${riscv_gcc_relative_path}
+toolchain.path.512258282=${toolchain_install_path}/RISC-V/RISC-V-GCC/11.1.0/bin
