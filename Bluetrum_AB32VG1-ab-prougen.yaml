@@ -122,6 +122,6 @@ template_projects:
     source_path_offset: ''
     target_path_offset: rt-thread
   project_description: 描述
-  project_name: rt-spark
+  project_name: AB32VG1-ab-prougen
   project_type: rt-thread|@full|@4.0.5
 yaml_version: 3
